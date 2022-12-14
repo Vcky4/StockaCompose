@@ -18,7 +18,12 @@ class MainActivity : ComponentActivity() {
         setContent {
             StockaComposeTheme {
                 // A surface container using the 'background' color from the theme
-                Greeting("Android")
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colors.background
+                ) {
+                    Greeting("Android")
+                }
             }
         }
     }
