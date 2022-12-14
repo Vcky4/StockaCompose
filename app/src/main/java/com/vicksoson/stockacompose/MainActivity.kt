@@ -64,6 +64,6 @@ fun Greeting(name: String) {
 @Composable
 fun DefaultPreview() {
     StockaComposeTheme {
-        Greeting("Android")
+        Intro()
     }
 }
