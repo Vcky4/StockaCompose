@@ -5,10 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -19,6 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.vicksoson.stockacompose.ui.theme.Black
+import com.vicksoson.stockacompose.ui.theme.Primary
 import com.vicksoson.stockacompose.ui.theme.StockaComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -95,6 +93,9 @@ fun Intro() {
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 80.dp),
+            colors = ButtonDefaults.buttonColors(
+                backgroundColor = Primary
+            )
         ) {
             Text(text = "Continue", style = TextStyle(color = Black))
         }
