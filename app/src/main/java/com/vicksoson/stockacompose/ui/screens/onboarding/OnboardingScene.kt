@@ -6,6 +6,7 @@ import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -23,12 +24,14 @@ import com.vicksoson.stockacompose.ui.theme.Black
 import com.vicksoson.stockacompose.ui.theme.Gray
 import com.vicksoson.stockacompose.ui.theme.Primary
 import com.vicksoson.stockacompose.ui.theme.Teal200
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
 fun OnboardingScene() {
     Column(Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState()
+        val scope = rememberCoroutineScope()
         HorizontalPager(
             count = 3, state = pagerState,
             modifier = Modifier.weight(1f)
@@ -68,7 +71,18 @@ fun OnboardingScene() {
                 inactiveColor = Gray
             )
             Button(
-                onClick = {  },
+                onClick = {
+                    when (pagerState.currentPage) {
+                        2 -> {}
+                        else -> scope.launch {
+                            pagerState.animateScrollToPage(
+                                pagerState.currentPage.plus(
+                                    1
+                                )
+                            )
+                        }
+                    }
+                },
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .padding(bottom = 80.dp, top = 56.dp),
