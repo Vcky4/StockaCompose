@@ -10,6 +10,7 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.vicksoson.stockacompose.ui.screens.authentication.Login
 import com.vicksoson.stockacompose.ui.screens.onboarding.Intro
 import com.vicksoson.stockacompose.ui.screens.onboarding.OnboardingScene
 import com.vicksoson.stockacompose.ui.theme.StockaComposeTheme
@@ -24,7 +25,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    OnboardingScene()
+                    Login()
                 }
             }
         }
