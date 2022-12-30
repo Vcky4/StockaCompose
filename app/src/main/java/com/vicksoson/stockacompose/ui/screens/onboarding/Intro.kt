@@ -13,13 +13,14 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.vicksoson.stockacompose.R
 import com.vicksoson.stockacompose.ui.theme.Black
 import com.vicksoson.stockacompose.ui.theme.Primary
 
 
 @Composable
-fun Intro() {
+fun Intro(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -70,7 +71,9 @@ fun Intro() {
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = {
+                navController.navigate("login")
+            },
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(top = 80.dp),
