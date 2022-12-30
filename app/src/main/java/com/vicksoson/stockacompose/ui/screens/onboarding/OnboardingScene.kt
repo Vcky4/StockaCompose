@@ -28,7 +28,7 @@ import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
 @Composable
-fun OnboardingScene(onGetStated: () -> Unit = {}) {
+fun OnboardingScene(onGetStarted: () -> Unit = {}) {
     Column(Modifier.fillMaxSize()) {
         val pagerState = rememberPagerState()
         val scope = rememberCoroutineScope()
@@ -74,7 +74,7 @@ fun OnboardingScene(onGetStated: () -> Unit = {}) {
                 onClick = {
                     when (pagerState.currentPage) {
                         2 -> {
-                            onGetStated.invoke()
+                            onGetStarted.invoke()
                         }
                         else -> scope.launch {
                             pagerState.animateScrollToPage(
