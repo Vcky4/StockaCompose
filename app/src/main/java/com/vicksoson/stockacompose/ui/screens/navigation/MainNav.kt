@@ -14,7 +14,11 @@ fun MainNav() {
 
     NavHost(navController = navController, startDestination = "intro") {
         composable("intro") {
-            Intro(navController = navController)
+            Intro(
+                onContinue = {
+                    navController.navigate("onboarding")
+                }
+            )
         }
         composable("onboarding") {
             OnboardingScene()
