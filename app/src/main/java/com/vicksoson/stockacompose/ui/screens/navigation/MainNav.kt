@@ -21,7 +21,11 @@ fun MainNav() {
             )
         }
         composable("onboarding") {
-            OnboardingScene()
+            OnboardingScene(
+                onGetStated = {
+                    navController.navigate("login")
+                }
+            )
         }
         composable("login") {
             Login()
