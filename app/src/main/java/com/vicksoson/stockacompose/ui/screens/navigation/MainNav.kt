@@ -15,7 +15,14 @@ fun MainNav() {
 
     NavHost(navController = navController, startDestination = "start") {
         composable("start") {
-            StartScreen()
+            StartScreen(
+                onAction = {
+                    when (it) {
+                        "signUp" -> navController.navigate("signUp")
+                        "login" -> navController.navigate("login")
+                    }
+                }
+            )
         }
         composable("intro") {
             Intro(
