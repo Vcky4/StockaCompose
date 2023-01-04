@@ -7,12 +7,16 @@ import androidx.navigation.compose.rememberNavController
 import com.vicksoson.stockacompose.ui.screens.authentication.Login
 import com.vicksoson.stockacompose.ui.screens.onboarding.Intro
 import com.vicksoson.stockacompose.ui.screens.onboarding.OnboardingScene
+import com.vicksoson.stockacompose.ui.screens.onboarding.StartScreen
 
 @Composable
 fun MainNav() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "intro") {
+    NavHost(navController = navController, startDestination = "start") {
+        composable("start") {
+            StartScreen()
+        }
         composable("intro") {
             Intro(
                 onContinue = {
