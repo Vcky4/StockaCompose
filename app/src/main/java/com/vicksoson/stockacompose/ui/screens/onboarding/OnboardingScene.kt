@@ -11,10 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.*
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.google.accompanist.pager.ExperimentalPagerApi
 import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.HorizontalPagerIndicator
@@ -23,7 +20,6 @@ import com.vicksoson.stockacompose.R
 import com.vicksoson.stockacompose.ui.theme.Black
 import com.vicksoson.stockacompose.ui.theme.Gray
 import com.vicksoson.stockacompose.ui.theme.Primary
-import com.vicksoson.stockacompose.ui.theme.Teal200
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
@@ -101,66 +97,4 @@ fun OnboardingScene(onGetStarted: () -> Unit = {}) {
             }
         }
     }
-}
-
-@Composable
-fun CustomText(modifier: Modifier, text: String) {
-    val annotedText = buildAnnotatedString {
-        text.split(" ").forEach {
-            if (it == "stocka") {
-                "stocka".forEach { char ->
-                    if (char == 'a') {
-                        pushStringAnnotation(
-                            tag = "stocka",
-                            annotation = char.toString()
-                        )
-                        withStyle(
-                            style = SpanStyle(
-                                color = Primary,
-                                fontSize = 22.sp,
-                                fontWeight = FontWeight.SemiBold,
-
-                                )
-                        ) {
-                            append("$char")
-                        }
-                        pop()
-                    } else {
-                        pushStringAnnotation(
-                            tag = "stocka",
-                            annotation = char.toString()
-                        )
-                        withStyle(
-                            style = SpanStyle(
-                                color = Teal200,
-                                fontSize = 22.sp,
-                                fontWeight = FontWeight.SemiBold,
-
-                                )
-                        ) {
-                            append("$char")
-                        }
-                        pop()
-                    }
-                }
-            } else {
-                pushStringAnnotation(
-                    tag = "URL",
-                    annotation = it
-                )
-                withStyle(
-                    style = SpanStyle(
-                        color = Black,
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                ) {
-                    append("$it ")
-                }
-                pop()
-            }
-        }
-
-    }
-    Text(text = annotedText, modifier = modifier, textAlign = TextAlign.Center)
 }
