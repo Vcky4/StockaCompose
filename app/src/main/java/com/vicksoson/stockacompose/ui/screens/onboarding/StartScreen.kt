@@ -26,7 +26,7 @@ fun StartScreen() {
                 .align(Alignment.CenterHorizontally)
         )
         Column(Modifier.weight(0.6f)) {
-            CustomText(modifier = Modifier, text = "Welcome to Stocka")
+            CustomText(modifier = Modifier, text = "Welcome to\n Stocka", fontSize = 36)
         }
     }
 }
