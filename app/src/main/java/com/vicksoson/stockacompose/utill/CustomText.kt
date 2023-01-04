@@ -12,14 +12,15 @@ import androidx.compose.ui.unit.sp
 import com.vicksoson.stockacompose.ui.theme.Black
 import com.vicksoson.stockacompose.ui.theme.Primary
 import com.vicksoson.stockacompose.ui.theme.Teal200
+import java.util.*
 
 
 @Composable
 fun CustomText(modifier: Modifier, text: String) {
     val annotedText = buildAnnotatedString {
         text.split(" ").forEach {
-            if (it == "stocka") {
-                "stocka".forEach { char ->
+            if (it.lowercase(Locale.ROOT) == "stocka") {
+                it.forEach { char ->
                     if (char == 'a') {
                         pushStringAnnotation(
                             tag = "stocka",
