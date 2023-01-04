@@ -20,6 +20,7 @@ import com.vicksoson.stockacompose.R
 import com.vicksoson.stockacompose.ui.theme.Black
 import com.vicksoson.stockacompose.ui.theme.Gray
 import com.vicksoson.stockacompose.ui.theme.Primary
+import com.vicksoson.stockacompose.utill.CustomText
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalPagerApi::class)
