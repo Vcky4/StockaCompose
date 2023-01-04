@@ -5,6 +5,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vicksoson.stockacompose.ui.screens.authentication.Login
+import com.vicksoson.stockacompose.ui.screens.authentication.SignUp
 import com.vicksoson.stockacompose.ui.screens.onboarding.Intro
 import com.vicksoson.stockacompose.ui.screens.onboarding.OnboardingScene
 import com.vicksoson.stockacompose.ui.screens.onboarding.StartScreen
@@ -40,6 +41,10 @@ fun MainNav() {
         }
         composable("login") {
             Login()
+        }
+
+        composable("signUp") {
+            SignUp()
         }
     }
 }
