@@ -40,6 +40,15 @@ fun SignUp() {
         var industry by remember {
             mutableStateOf(TextFieldValue(""))
         }
+        var password by remember {
+            mutableStateOf(TextFieldValue(""))
+        }
+        var confirmPassword by remember {
+            mutableStateOf(TextFieldValue(""))
+        }
+        var step by remember {
+            mutableStateOf(1)
+        }
         // Logo
         Card(
             Modifier
@@ -62,147 +71,219 @@ fun SignUp() {
                 .verticalScroll(rememberScrollState())
         ) {
             //greeting
-            Text(text = "Let’s get you started", fontSize = 24.sp, fontWeight = FontWeight.Medium)
-            Text(text = "Create An Account", fontSize = 12.sp, color = Gray)
-
-            //username
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(top = 38.dp)
-            ) {
-                TextField(
-                    value = userName,
-                    onValueChange = {
-                        userName = it
-                    },
-                    colors = TextFieldDefaults.textFieldColors(
-                        backgroundColor = Color.Transparent,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent,
-                        cursorColor = Primary,
-                    ),
-                    placeholder = {
-                        Text(text = "Username", color = Color.Gray)
-                    },
-                    modifier = Modifier
-                        .border(1.dp, Gray, RoundedCornerShape(10.dp))
-                        .fillMaxWidth(),
-
-                    )
-            }
-            //password
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(top = 38.dp)
-            ) {
-                TextField(
-                    value = phoneNumber,
-                    onValueChange = {
-                        phoneNumber = it
-                    },
-                    colors = TextFieldDefaults.textFieldColors(
-                        backgroundColor = Color.Transparent,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent,
-                        cursorColor = Primary,
-                    ),
-                    placeholder = {
-                        Text(text = "Phone Number", color = Color.Gray)
-                    },
-                    modifier = Modifier
-                        .border(1.dp, Gray, RoundedCornerShape(10.dp))
-                        .fillMaxWidth(),
-
-                    )
-            }
-            //email
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(top = 38.dp)
-            ) {
-                TextField(
-                    value = email,
-                    onValueChange = {
-                        email = it
-                    },
-                    colors = TextFieldDefaults.textFieldColors(
-                        backgroundColor = Color.Transparent,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent,
-                        cursorColor = Primary,
-                    ),
-                    placeholder = {
-                        Text(text = "Email Address", color = Color.Gray)
-                    },
-                    modifier = Modifier
-                        .border(1.dp, Gray, RoundedCornerShape(10.dp))
-                        .fillMaxWidth(),
-
-                    )
-            }
-            //industry
-            Box(
-                Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 38.dp)
-            ) {
-                TextField(
-                    value = industry,
-                    onValueChange = {
-                        industry = it
-                    },
-                    colors = TextFieldDefaults.textFieldColors(
-                        backgroundColor = Color.Transparent,
-                        focusedIndicatorColor = Color.Transparent,
-                        unfocusedIndicatorColor = Color.Transparent,
-                        disabledIndicatorColor = Color.Transparent,
-                        cursorColor = Primary,
-                    ),
-                    placeholder = {
-                        Text(
-                            text = "What industry does your business operate in?",
-                            color = Color.Gray
-                        )
-                    },
-                    modifier = Modifier
-                        .border(1.dp, Gray, RoundedCornerShape(10.dp))
-                        .fillMaxWidth(),
-
-                    )
+            Text(
+                text = if (step == 1) "Let’s get you started" else "Complete Set Up ",
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Medium
+            )
+            if (step == 1) {
+                Text(text = "Create An Account", fontSize = 12.sp, color = Gray)
             }
 
-            Button(
-                onClick = { /*TODO*/ },
-                colors = ButtonDefaults.buttonColors(backgroundColor = Primary),
-                modifier = Modifier
-                    .height(50.dp)
-                    .fillMaxWidth(), shape = RoundedCornerShape(10.dp)
-            ) {
-                Text(text = "Continue", color = Color.Black, fontSize = 14.sp)
-            }
-            Row(
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier
-                    .padding(top = 20.dp)
-                    .fillMaxWidth(),
-                horizontalArrangement = Arrangement.Center
-            ) {
-                Text(
-                    text = "Already have an account?",
-                    fontSize = 10.sp,
-                    modifier = Modifier.padding(end = 4.dp)
-                )
-                Text(text = "Login", fontSize = 10.sp, color = Primary)
-            }
+            when (step) {
+                1 -> {
+                    //username
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 38.dp)
+                    ) {
+                        TextField(
+                            value = userName,
+                            onValueChange = {
+                                userName = it
+                            },
+                            colors = TextFieldDefaults.textFieldColors(
+                                backgroundColor = Color.Transparent,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent,
+                                cursorColor = Primary,
+                            ),
+                            placeholder = {
+                                Text(text = "Username", color = Color.Gray)
+                            },
+                            modifier = Modifier
+                                .border(1.dp, Gray, RoundedCornerShape(10.dp))
+                                .fillMaxWidth(),
 
+                            )
+                    }
+                    //password
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 38.dp)
+                    ) {
+                        TextField(
+                            value = phoneNumber,
+                            onValueChange = {
+                                phoneNumber = it
+                            },
+                            colors = TextFieldDefaults.textFieldColors(
+                                backgroundColor = Color.Transparent,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent,
+                                cursorColor = Primary,
+                            ),
+                            placeholder = {
+                                Text(text = "Phone Number", color = Color.Gray)
+                            },
+                            modifier = Modifier
+                                .border(1.dp, Gray, RoundedCornerShape(10.dp))
+                                .fillMaxWidth(),
+
+                            )
+                    }
+                    //email
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 38.dp)
+                    ) {
+                        TextField(
+                            value = email,
+                            onValueChange = {
+                                email = it
+                            },
+                            colors = TextFieldDefaults.textFieldColors(
+                                backgroundColor = Color.Transparent,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent,
+                                cursorColor = Primary,
+                            ),
+                            placeholder = {
+                                Text(text = "Email Address", color = Color.Gray)
+                            },
+                            modifier = Modifier
+                                .border(1.dp, Gray, RoundedCornerShape(10.dp))
+                                .fillMaxWidth(),
+
+                            )
+                    }
+                    //industry
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 38.dp)
+                    ) {
+                        TextField(
+                            value = industry,
+                            onValueChange = {
+                                industry = it
+                            },
+                            colors = TextFieldDefaults.textFieldColors(
+                                backgroundColor = Color.Transparent,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent,
+                                cursorColor = Primary,
+                            ),
+                            placeholder = {
+                                Text(
+                                    text = "What industry does your business operate in?",
+                                    color = Color.Gray
+                                )
+                            },
+                            modifier = Modifier
+                                .border(1.dp, Gray, RoundedCornerShape(10.dp))
+                                .fillMaxWidth(),
+
+                            )
+                    }
+                }
+                2 -> {
+                    //password
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(top = 38.dp)
+                    ) {
+                        TextField(
+                            value = password,
+                            onValueChange = {
+                                password = it
+                            },
+                            colors = TextFieldDefaults.textFieldColors(
+                                backgroundColor = Color.Transparent,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent,
+                                cursorColor = Primary,
+                            ),
+                            placeholder = {
+                                Text(text = "Create Password", color = Color.Gray)
+                            },
+                            modifier = Modifier
+                                .border(1.dp, Gray, RoundedCornerShape(10.dp))
+                                .fillMaxWidth(),
+
+                            )
+                    }
+                    //confirm pasword
+                    Box(
+                        Modifier
+                            .fillMaxWidth()
+                            .padding(vertical = 38.dp)
+                    ) {
+                        TextField(
+                            value = confirmPassword,
+                            onValueChange = {
+                                confirmPassword = it
+                            },
+                            colors = TextFieldDefaults.textFieldColors(
+                                backgroundColor = Color.Transparent,
+                                focusedIndicatorColor = Color.Transparent,
+                                unfocusedIndicatorColor = Color.Transparent,
+                                disabledIndicatorColor = Color.Transparent,
+                                cursorColor = Primary,
+                            ),
+                            placeholder = {
+                                Text(
+                                    text = "Confirm Password",
+                                    color = Color.Gray
+                                )
+                            },
+                            modifier = Modifier
+                                .border(1.dp, Gray, RoundedCornerShape(10.dp))
+                                .fillMaxWidth(),
+
+                            )
+                    }
+                }
+            }
         }
 
+        Button(
+            onClick = {
+                if (step == 1) {
+                    step = 2
+                } else {
+                }
+            },
+            colors = ButtonDefaults.buttonColors(backgroundColor = Primary),
+            modifier = Modifier
+                .height(50.dp)
+                .fillMaxWidth(), shape = RoundedCornerShape(10.dp)
+        ) {
+            Text(text = "Continue", color = Color.Black, fontSize = 14.sp)
+        }
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .padding(top = 20.dp)
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.Center
+        ) {
+            Text(
+                text = "Already have an account?",
+                fontSize = 10.sp,
+                modifier = Modifier.padding(end = 4.dp)
+            )
+            Text(text = "Login", fontSize = 10.sp, color = Primary)
+        }
 
     }
 }
