@@ -16,7 +16,7 @@ import java.util.*
 
 
 @Composable
-fun CustomText(modifier: Modifier, text: String) {
+fun CustomText(modifier: Modifier, text: String, fontSize: Int = 22) {
     val annotedText = buildAnnotatedString {
         text.split(" ").forEach {
             if (it.lowercase(Locale.ROOT) == "stocka") {
@@ -29,7 +29,7 @@ fun CustomText(modifier: Modifier, text: String) {
                         withStyle(
                             style = SpanStyle(
                                 color = Primary,
-                                fontSize = 22.sp,
+                                fontSize = fontSize.sp,
                                 fontWeight = FontWeight.SemiBold,
 
                                 )
@@ -45,7 +45,7 @@ fun CustomText(modifier: Modifier, text: String) {
                         withStyle(
                             style = SpanStyle(
                                 color = Teal200,
-                                fontSize = 22.sp,
+                                fontSize = fontSize.sp,
                                 fontWeight = FontWeight.SemiBold,
 
                                 )
@@ -63,7 +63,7 @@ fun CustomText(modifier: Modifier, text: String) {
                 withStyle(
                     style = SpanStyle(
                         color = Black,
-                        fontSize = 22.sp,
+                        fontSize = fontSize.sp,
                         fontWeight = FontWeight.SemiBold
                     )
                 ) {
