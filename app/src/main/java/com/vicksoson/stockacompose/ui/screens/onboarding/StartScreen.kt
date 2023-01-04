@@ -19,7 +19,7 @@ import com.vicksoson.stockacompose.ui.theme.Primary
 import com.vicksoson.stockacompose.utill.CustomText
 
 @Composable
-fun StartScreen() {
+fun StartScreen(onAction: (String) -> Unit) {
     Column(
         Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -43,7 +43,7 @@ fun StartScreen() {
 
             Column {
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { onAction.invoke("login") },
                     colors = ButtonDefaults.buttonColors(backgroundColor = Primary),
                     modifier = Modifier
                         .height(50.dp)
@@ -53,7 +53,7 @@ fun StartScreen() {
                 }
                 Spacer(modifier = Modifier.height(30.dp))
                 Button(
-                    onClick = { /*TODO*/ },
+                    onClick = { onAction.invoke("signUp") },
                     colors = ButtonDefaults.buttonColors(backgroundColor = Primary),
                     modifier = Modifier
                         .height(50.dp)
