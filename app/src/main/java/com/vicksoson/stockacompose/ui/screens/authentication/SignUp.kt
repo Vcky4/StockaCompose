@@ -1,5 +1,6 @@
 package com.vicksoson.stockacompose.ui.screens.authentication
 
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
@@ -62,6 +63,10 @@ fun SignUp() {
                     .size(48.dp)
 
             )
+        }
+
+        BackHandler(enabled = step > 1) {
+            step--
         }
 
         // Login Form
@@ -268,7 +273,11 @@ fun SignUp() {
                 .height(50.dp)
                 .fillMaxWidth(), shape = RoundedCornerShape(10.dp)
         ) {
-            Text(text = "Continue", color = Color.Black, fontSize = 14.sp)
+            Text(
+                text = if (step == 2) "Sign In" else "Continue",
+                color = Color.Black,
+                fontSize = 14.sp
+            )
         }
         Row(
             verticalAlignment = Alignment.CenterVertically,
