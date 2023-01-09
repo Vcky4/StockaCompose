@@ -22,7 +22,7 @@ import com.vicksoson.stockacompose.ui.theme.Gray
 import com.vicksoson.stockacompose.ui.theme.Primary
 
 @Composable
-fun SignUp() {
+fun SignUp(onComplete: () -> Unit = {}) {
     Column(
         Modifier
             .fillMaxSize()
@@ -266,6 +266,7 @@ fun SignUp() {
                 if (step == 1) {
                     step = 2
                 } else {
+                    onComplete.invoke()
                 }
             },
             colors = ButtonDefaults.buttonColors(backgroundColor = Primary),

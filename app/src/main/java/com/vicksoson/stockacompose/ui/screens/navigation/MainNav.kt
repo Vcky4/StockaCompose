@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.vicksoson.stockacompose.ui.screens.authentication.Login
 import com.vicksoson.stockacompose.ui.screens.authentication.SignUp
+import com.vicksoson.stockacompose.ui.screens.home.Home
 import com.vicksoson.stockacompose.ui.screens.onboarding.Intro
 import com.vicksoson.stockacompose.ui.screens.onboarding.OnboardingScene
 import com.vicksoson.stockacompose.ui.screens.onboarding.StartScreen
@@ -15,7 +16,7 @@ import com.vicksoson.stockacompose.ui.screens.onboarding.Welcome
 fun MainNav() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "welcome") {
+    NavHost(navController = navController, startDestination = "intro") {
         composable("start") {
             StartScreen(
                 onAction = {
@@ -45,11 +46,22 @@ fun MainNav() {
         }
 
         composable("signUp") {
-            SignUp()
+            SignUp(
+                onComplete = {
+                    navController.navigate("welcome")
+                }
+            )
         }
 
         composable("welcome") {
-            Welcome()
+            Welcome(
+                onEnter = {
+                    navController.navigate("home")
+                }
+            )
+        }
+        composable("home") {
+            Home()
         }
     }
 }
