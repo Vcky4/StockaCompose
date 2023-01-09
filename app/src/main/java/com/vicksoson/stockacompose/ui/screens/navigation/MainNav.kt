@@ -9,12 +9,13 @@ import com.vicksoson.stockacompose.ui.screens.authentication.SignUp
 import com.vicksoson.stockacompose.ui.screens.onboarding.Intro
 import com.vicksoson.stockacompose.ui.screens.onboarding.OnboardingScene
 import com.vicksoson.stockacompose.ui.screens.onboarding.StartScreen
+import com.vicksoson.stockacompose.ui.screens.onboarding.Welcome
 
 @Composable
 fun MainNav() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "intro") {
+    NavHost(navController = navController, startDestination = "welcome") {
         composable("start") {
             StartScreen(
                 onAction = {
@@ -45,6 +46,10 @@ fun MainNav() {
 
         composable("signUp") {
             SignUp()
+        }
+
+        composable("welcome") {
+            Welcome()
         }
     }
 }
