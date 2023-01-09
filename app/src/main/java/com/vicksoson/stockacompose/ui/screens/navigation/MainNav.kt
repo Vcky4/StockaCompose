@@ -14,7 +14,7 @@ import com.vicksoson.stockacompose.ui.screens.onboarding.StartScreen
 fun MainNav() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = "start") {
+    NavHost(navController = navController, startDestination = "intro") {
         composable("start") {
             StartScreen(
                 onAction = {
@@ -35,7 +35,7 @@ fun MainNav() {
         composable("onboarding") {
             OnboardingScene(
                 onGetStarted = {
-                    navController.navigate("login")
+                    navController.navigate("start")
                 }
             )
         }
