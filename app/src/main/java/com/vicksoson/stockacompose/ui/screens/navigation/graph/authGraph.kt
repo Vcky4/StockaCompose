@@ -6,6 +6,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import com.vicksoson.stockacompose.ui.screens.authentication.Login
 import com.vicksoson.stockacompose.ui.screens.authentication.SignUp
+import com.vicksoson.stockacompose.ui.screens.navigation.routes.AuthRoutes
 import com.vicksoson.stockacompose.ui.screens.onboarding.Intro
 import com.vicksoson.stockacompose.ui.screens.onboarding.OnboardingScene
 import com.vicksoson.stockacompose.ui.screens.onboarding.StartScreen
@@ -16,46 +17,46 @@ fun NavGraphBuilder.authGraph(
     navController: NavController
 ) {
     navigation(
-        startDestination = "intro",
-        route = "auth"
+        startDestination = AuthRoutes.Intro,
+        route = AuthRoutes.Default
     ) {
-        composable("start") {
+        composable(AuthRoutes.Start) {
             StartScreen(
                 onAction = {
                     when (it) {
-                        "signUp" -> navController.navigate("signUp")
-                        "login" -> navController.navigate("login")
+                        AuthRoutes.SignUp -> navController.navigate(AuthRoutes.SignUp)
+                        AuthRoutes.Login -> navController.navigate(AuthRoutes.Login)
                     }
                 }
             )
         }
-        composable("intro") {
+        composable(AuthRoutes.Intro) {
             Intro(
                 onContinue = {
-                    navController.navigate("onboarding")
+                    navController.navigate(AuthRoutes.Onboarding)
                 }
             )
         }
-        composable("onboarding") {
+        composable(AuthRoutes.Onboarding) {
             OnboardingScene(
                 onGetStarted = {
-                    navController.navigate("start")
+                    navController.navigate(AuthRoutes.Start)
                 }
             )
         }
-        composable("login") {
+        composable(AuthRoutes.Login) {
             Login()
         }
 
-        composable("signUp") {
+        composable(AuthRoutes.SignUp) {
             SignUp(
                 onComplete = {
-                    navController.navigate("welcome")
+                    navController.navigate(AuthRoutes.Welcome)
                 }
             )
         }
 
-        composable("welcome") {
+        composable(AuthRoutes.Welcome) {
             Welcome(
                 onEnter = {
                     navController.navigate("home")
